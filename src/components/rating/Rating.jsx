@@ -22,7 +22,7 @@ const styles = {
 }
 
 function Rating() {
-    // const [ratingValue, setRatingValue] = useState('https://t4.ftcdn.net/jpg/03/80/35/39/360_F_380353964_T1BYrcnTa10esMxYRAlruj6OpyFkUufo.jpg');
+    
     const [ratingValue, setRatingValue] = useState(0);
     const ratingList= [
         'https://t4.ftcdn.net/jpg/03/80/35/39/360_F_380353964_T1BYrcnTa10esMxYRAlruj6OpyFkUufo.jpg',
@@ -31,40 +31,36 @@ function Rating() {
         'https://sun9-28.userapi.com/impf/c855436/v855436801/d69a5/8TdLk-8oMHA.jpg?size=1161x913&quality=96&sign=fc8537d8437b1421872208ca5e29fc8a&c_uniq_tag=3sdCGa_KUxOtSRVS5RNDFGr77OoKVRi8MwqGagANG1E&type=album',
         'https://banner2.kisspng.com/20181128/uct/kisspng-galatasaray-s-k-dream-league-soccer-uefa-champion-yldz-clipart-ourclipart-5bff31fccd2c99.8288298815434511328404.jpg'
     ]
-    
-    // function oneRatingList() {
-    //     const oneIndex = Math.floor(Math.random() * ratingList.length);
-    //     setRatingValue([...ratingValue, ratingList[oneIndex]]);
-    // }
-    // function oneRatingList(index) {
-    //     setRatingValue(ratingList[index]);
-    // }
+    const [ratingWord, setRatingWord] = useState('')
+    const ratingWords = ['Плохо','Хорошо','Отлично','Супер']
 
+    function handleRatingClick(value) {
+        setRatingValue(value);
+        setRatingWord(ratingWords[value - 1]);
+    }
+    
     return(
         <div style={styles.div}>
          <>
-            <button className="button"  onClick={() => setRatingValue(1)}>
-                Плохо
+            <button className="button"  onClick={() => handleRatingClick(1)}>
+             {ratingWords[0]}
             </button>
 
-            <button className="button" onClick={() => setRatingValue(2)}>
-                Хорошо
+            <button className="button" onClick={() => handleRatingClick(2)}>
+            {ratingWords[1]}
             </button>
 
-            <button className="button" onClick={() => setRatingValue(3)}>
-                Отлично
+            <button className="button" onClick={() => handleRatingClick(3)}>
+            {ratingWords[2]}
             </button>
 
-            <button className="button" onClick={() => setRatingValue(4)}>
-                Супер
+            <button className="button" onClick={() => handleRatingClick(4)}>
+            {ratingWords[3]}
             </button>
           </>
 
          <div style={styles.bottomBlock}>
             Ваша Оценка 
-            {/* {ratingValue &&
-            <img style={styles.img} src={ratingValue}/>
-            } */}
             <img style={styles.img} src={ratingList[ratingValue]}/>
          </div>
         </div>
